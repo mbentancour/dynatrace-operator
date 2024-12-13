@@ -7,6 +7,7 @@ import (
 
 	"github.com/Dynatrace/dynatrace-operator/pkg/api/v1beta3/dynakube"
 	"github.com/Dynatrace/dynatrace-operator/pkg/api/v1beta3/dynakube/activegate"
+	"github.com/Dynatrace/dynatrace-operator/pkg/api/v1beta3/dynakube/oneagent"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -25,8 +26,8 @@ func TestImageFieldHasTenantImage(t *testing.T) {
 			},
 			Spec: dynakube.DynaKubeSpec{
 				APIURL: testTenantUrl + "/api",
-				OneAgent: dynakube.OneAgentSpec{
-					ClassicFullStack: &dynakube.HostInjectSpec{
+				OneAgent: oneagent.Spec{
+					ClassicFullStack: &oneagent.HostInjectSpec{
 						Image: "BOOM",
 					},
 				},
@@ -50,8 +51,8 @@ func TestImageFieldHasTenantImage(t *testing.T) {
 			},
 			Spec: dynakube.DynaKubeSpec{
 				APIURL: testTenantUrl + "/api",
-				OneAgent: dynakube.OneAgentSpec{
-					ClassicFullStack: &dynakube.HostInjectSpec{
+				OneAgent: oneagent.Spec{
+					ClassicFullStack: &oneagent.HostInjectSpec{
 						Image: testTenantUrl + "/linux/oneagent:latest",
 					},
 				},
@@ -72,8 +73,8 @@ func TestImageFieldHasTenantImage(t *testing.T) {
 			},
 			Spec: dynakube.DynaKubeSpec{
 				APIURL: testTenantUrl + "/api",
-				OneAgent: dynakube.OneAgentSpec{
-					ClassicFullStack: &dynakube.HostInjectSpec{
+				OneAgent: oneagent.Spec{
+					ClassicFullStack: &oneagent.HostInjectSpec{
 						Image: testRegistryUrl + "/linux/oneagent:latest",
 					},
 				},
