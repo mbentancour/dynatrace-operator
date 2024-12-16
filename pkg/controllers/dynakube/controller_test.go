@@ -698,7 +698,7 @@ func createTenantSecrets(dk *dynakube.DynaKube) []client.Object {
 	return []client.Object{
 		&corev1.Secret{
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      dk.OneAgent().OneagentTenantSecret(),
+				Name:      dk.OneAgent().GetTenantSecret(),
 				Namespace: testNamespace,
 			},
 			Data: map[string][]byte{
